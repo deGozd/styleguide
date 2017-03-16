@@ -1,0 +1,49 @@
+    <script> 
+        $(document).ready(function(){
+            
+            
+            
+            
+            var windowHeight = $(window).height();
+            var windowWidth = $(window).width(); 
+            
+            $('#sg-surface').height(windowHeight);
+            $('#sg-surface').width(windowWidth);
+            $('#sg-type').height(windowHeight);
+            $('#sg-type').width(windowWidth);
+            
+            n = 1;
+            
+            var clicked = true;
+          
+            $('#sg-type').click(function(){ 
+                
+                    console.log(clicked);
+                if (clicked) {
+                    var x = event.clientX; 
+                    var y = event.clientY - 60; 
+                    var color = $('#sg-color-picker').val();
+                    var circles = $('#sg-surface').html();
+                    
+                    $('#sg-surface').html(circles + '<circle class="style-dot-' + n + '" cx="' + x + '" cy="' + y + '" r="20" fill="' + color + '" />'); 
+
+                    var offset = 30;
+                    var x = x + offset;
+                    var y = y - 20;
+                    var inner = '<div class="sg sg-box-1" style="top:1px;left:1px;"></div>';
+                    var types = $('#sg-type').html();
+                    
+                    $('#sg-type').html(types + '<div class="sg sg-box-' + n + '" style="top:' + y + 'px;left:' + x + 'px;"></div>'); 
+                    $('.sg-box-' + n).html('<textarea class="sg-box-' + n + '"></textarea><button class="sg-button-' + n + '">Save</button>');
+
+                    n++
+                    clicked = false; 
+                    
+                    
+                } else {
+                    
+                }
+                
+            });
+        });        
+    </script>
